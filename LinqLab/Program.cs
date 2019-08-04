@@ -1,4 +1,5 @@
-﻿using LinqLab.Models;
+﻿
+using LinqLab.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -16,12 +17,12 @@ namespace LinqLab
 
             var services = new ServiceCollection();
 
-            services.AddDbContext<ChinbookContext>(options =>
+            services.AddDbContext<ChinookContext>(options =>
             options.UseSqlite("Data Source=chinook.db"));
 
             var provider = services.BuildServiceProvider();
 
-            var db = provider.GetService<ChinbookContext>();
+            var db = provider.GetService<ChinookContext>();
 
             var model = db.Albums;
 
@@ -34,6 +35,6 @@ namespace LinqLab
 
         }
 
-        
+
     }
 }

@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace LinqLab.Models
 {
-    public partial class ChinbookContext : DbContext
+    public partial class ChinookContext : DbContext
     {
-        public ChinbookContext()
+        public ChinookContext()
         {
         }
 
-        public ChinbookContext(DbContextOptions<ChinbookContext> options)
+        public ChinookContext(DbContextOptions<ChinookContext> options)
             : base(options)
         {
         }
