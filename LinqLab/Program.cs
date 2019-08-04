@@ -1,4 +1,5 @@
 ﻿using LinqLab.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MoreLinq;
@@ -15,7 +16,8 @@ namespace LinqLab
 
             var services = new ServiceCollection();
 
-            services.AddDbContext<ChinbookContext>();
+            services.AddDbContext<ChinbookContext>(options =>
+            options.UseSqlite("Data Source=chinook.db"));
 
             var provider = services.BuildServiceProvider();
 
