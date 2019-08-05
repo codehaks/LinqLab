@@ -1,4 +1,5 @@
 ﻿
+using LinqLab.API;
 using LinqLab.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,14 +20,19 @@ namespace LinqLab
 
             services.AddDbContext<ChinookContext>(options =>
             options.UseSqlite("Data Source=chinook.db"));
+            services.AddTransient<Query>();
 
             var provider = services.BuildServiceProvider();
 
-            var db = provider.GetService<ChinookContext>();
+            //var db = provider.GetService<ChinookContext>();
 
-            var model = db.Albums;
+            //var model = db.Albums;
 
-            foreach (var item in model)
+            var query = provider.GetService<Query>();
+
+            var albums = query.GetAlbums();
+
+            foreach (var item in albums)
             {
                 Console.WriteLine(item.Title);
             }
