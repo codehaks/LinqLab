@@ -23,21 +23,13 @@ namespace LinqLab
             services.AddTransient<Query>();
 
             var provider = services.BuildServiceProvider();
-
-            //var db = provider.GetService<ChinookContext>();
-
+            //var db = provider.GetService<ChinookContext>()
             //var model = db.Albums;
-
             var query = provider.GetService<Query>();
+            //var albums = query.GetAlbums();            
 
-            var albums = query.GetAlbums();
-
-            foreach (var item in albums)
-            {
-                Console.WriteLine(item.Title);
-            }
-
-
+            query.MostPopularTracks();
+            
 
         }
 
