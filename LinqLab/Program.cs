@@ -28,8 +28,12 @@ namespace LinqLab
             var query = provider.GetService<Query>();
             //var albums = query.GetAlbums();            
 
-            query.MostPopularTracks();
-            
+            //query.MostPopularTracks();
+
+            //query.InvoiceCustomerSupport();
+            //query.BestCustomers();
+            query.BestCustomers2();
+
 
         }
 
