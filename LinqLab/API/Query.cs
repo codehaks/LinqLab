@@ -56,9 +56,10 @@ namespace LinqLab.API
         public void BestCustomers()
         {
             var q1 = _db.Invoices
-                .Join(_db.Customers,
-                i => i.CustomerId,
-                c => c.CustomerId,(i,c)=> new { Invoice=i,Customer=c}).Select(j=>new { j.Customer.LastName});
+                        .Join(_db.Customers,
+                        i => i.CustomerId,
+                        c => c.CustomerId,
+                        (i,c)=> new { Invoice=i,Customer=c}).Select(j=>new { j.Customer.LastName});
 
             foreach (var item in q1)
             {
@@ -70,11 +71,13 @@ namespace LinqLab.API
 
         public void BestCustomers2()
         {
-            var q = _db.Invoices.Include(i => i.Customer)
+            var q = _db.Invoices
+                .Include(i => i.Customer)
                 .GroupBy(i => i.CustomerId)
                 .OrderByDescending(g => g.Count())
                 .Take(100)
                 .Select(g => new { g.First().Customer.FirstName, g.First().Customer.LastName,Count=g.Count() });
+
             foreach (var item in q)
             {
                 Console.WriteLine($"{item.FirstName} {item.LastName} ({item.Count})");

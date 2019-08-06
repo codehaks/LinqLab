@@ -18,21 +18,25 @@ namespace LinqLab
 
             var services = new ServiceCollection();
 
-            services.AddDbContext<ChinookContext>(options =>
-            options.UseSqlite("Data Source=chinook.db"));
+            services.AddDbContext<ChinookContext>(
+                options => options.UseSqlite("Data Source=chinook.db"));
+
             services.AddTransient<Query>();
 
             var provider = services.BuildServiceProvider();
             //var db = provider.GetService<ChinookContext>()
             //var model = db.Albums;
+
+            
             var query = provider.GetService<Query>();
+
             //var albums = query.GetAlbums();            
 
             //query.MostPopularTracks();
 
-            //query.InvoiceCustomerSupport();
+            query.InvoiceCustomerSupport();
             //query.BestCustomers();
-            query.BestCustomers2();
+            //query.BestCustomers2();
 
 
         }
